@@ -27,7 +27,7 @@ var quitting = false
  */
 function quitIfAlreadyRunning () {
   if (!electron.app.requestSingleInstanceLock()) {
-    return electron.app.quit();
+    return electron.app.quit()
   }
   electron.app.on('second-instance', (event, commandLine, workingDirectory) => {
     // Someone tried to run a second instance, we should focus our window.
