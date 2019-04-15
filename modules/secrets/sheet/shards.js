@@ -168,15 +168,15 @@ exports.create = (api) => {
         function save () {
           state.publishing.set(true)
           const { request, shard } = resolve(props)
-          const params = {
-            root: shard.rootId,
-            shard: shard.shard,
-            shardId: shard.id,
-            requestId: request.id,
-            shareVersion: shard.shareVersion,
-            recp: request.from
-          }
-          scuttle.forward.async.publish(params, (err, forward) => {
+          // const params = {
+          //   root: shard.rootId,
+          //   shard: shard.shard,
+          //   shardId: shard.id,
+          //   requestId: request.id,
+          //   shareVersion: shard.shareVersion,
+          //   recp: request.from
+          // }
+          scuttle.forward.async.publish(shard.rootId, (err, forward) => {
             if (err) throw err
             state.publishing.set(false)
           })
